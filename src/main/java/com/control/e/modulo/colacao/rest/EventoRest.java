@@ -1,5 +1,4 @@
 package com.control.e.modulo.colacao.rest;
-import com.control.e.modulo.colacao.domain.Convidado;
 import com.control.e.modulo.colacao.domain.Evento;
 import com.control.e.modulo.colacao.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,8 @@ public class EventoRest {
     }
 
     @DeleteMapping
-    public void delete(@RequestBody Convidado convidado){
-        service.delete(convidado.getId());
+    public void delete(@RequestBody Evento evento){
+        service.delete(evento.getId());
     }
 
 }

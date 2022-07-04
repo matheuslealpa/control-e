@@ -2,10 +2,12 @@ package com.control.e.modulo.colacao.service;
 import com.control.e.modulo.colacao.domain.Convidado;
 import com.control.e.modulo.colacao.repository.ConvidadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@Service
 public class ConvidadoService {
     @Autowired
     private ConvidadoRepository repository;

@@ -4,10 +4,12 @@ import com.control.e.modulo.colacao.domain.Colando;
 import com.control.e.modulo.colacao.domain.Endereco;
 import com.control.e.modulo.colacao.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@Service
 public class EnderecoService {
 
     @Autowired
