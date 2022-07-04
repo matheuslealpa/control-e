@@ -21,7 +21,7 @@ public class ColandoRest {
 
     @GetMapping
     public List<Colando> read(Colando colando){
-        return service.read(colando);
+        return service.findAll(colando);
     }
 
     @PutMapping(path = "/{id}")

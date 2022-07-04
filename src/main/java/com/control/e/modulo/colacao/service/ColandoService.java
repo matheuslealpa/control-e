@@ -15,7 +15,7 @@ public class ColandoService {
         return repository.save(colando);
     }
 
-    public List<Colando> read(Colando colando){
+    public List<Colando> findAll(Colando colando){
         return repository.findAll();
     }
 
