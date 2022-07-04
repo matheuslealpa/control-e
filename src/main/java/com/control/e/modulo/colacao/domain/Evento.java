@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 public class Evento {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nomeLocal;
     private LocalDateTime dataEvento;
