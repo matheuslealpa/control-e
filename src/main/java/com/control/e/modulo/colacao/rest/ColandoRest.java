@@ -15,7 +15,7 @@ public class ColandoRest {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Colando create(Colando colando){
+    public Colando create(@RequestBody Colando colando){
         return service.create(colando);
     }
 
