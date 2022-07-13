@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/colandos")
+@RequestMapping("api/colando")
 public class ColandoRest {
 
     @Autowired

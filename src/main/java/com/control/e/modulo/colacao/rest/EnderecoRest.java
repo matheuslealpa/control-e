@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/enderecos")
+@RequestMapping("api/endereco")
 public class EnderecoRest {
     @Autowired
     private EnderecoService service;
