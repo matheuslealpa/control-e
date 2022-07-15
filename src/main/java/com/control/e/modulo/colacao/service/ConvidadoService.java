@@ -27,6 +27,8 @@ public class ConvidadoService {
     }
 
     public void delete(Long id){
+        if (!repository.existsById(id)) throw new
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         repository.deleteById(id);
     }
 }

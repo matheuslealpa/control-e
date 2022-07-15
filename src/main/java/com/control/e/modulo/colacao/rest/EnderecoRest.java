@@ -29,8 +29,9 @@ public class EnderecoRest {
         return service.update(id, endereco);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody Endereco endereco){
-        service.delete(endereco.getId());
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        service.delete(id);
     }
 }

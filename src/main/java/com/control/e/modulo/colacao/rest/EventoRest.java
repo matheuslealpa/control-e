@@ -29,9 +29,10 @@ public class EventoRest {
         return service.update(id, evento);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody Evento evento){
-        service.delete(evento.getId());
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        service.delete(id);
     }
 
 }

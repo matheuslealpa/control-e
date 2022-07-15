@@ -32,8 +32,9 @@ public class ConvidadoRest {
         return service.update(id, convidado);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody Convidado convidado){
-        service.delete(convidado.getId());
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        service.delete(id);
     }
 }

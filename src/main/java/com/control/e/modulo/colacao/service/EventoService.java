@@ -21,11 +21,13 @@ public class EventoService {
 
     public Evento update(Integer id, Evento evento){
         if (!repository.existsById(id)) throw new
-                EntityNotFoundException("Informe um id válido");
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         return repository.save(evento);
     }
 
     public void delete(Integer id){
+        if (!repository.existsById(id)) throw new
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         repository.deleteById(id);
     }
 
