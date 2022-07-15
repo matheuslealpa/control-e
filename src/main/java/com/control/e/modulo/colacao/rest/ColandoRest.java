@@ -29,9 +29,10 @@ public class ColandoRest {
         return service.update(id, colando);
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody Colando colando){
-        service.delete(colando.getId());
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        service.delete(id);
     }
 
 }

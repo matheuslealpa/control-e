@@ -21,11 +21,13 @@ public class ColandoService {
 
     public Colando update(Long id, Colando colando){
         if (!repository.existsById(id)) throw new
-                EntityNotFoundException("Colando não encontrado!");
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         return repository.save(colando);
     }
 
     public void delete(Long id){
+        if (!repository.existsById(id)) throw new
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         repository.deleteById(id);
     }
 }
