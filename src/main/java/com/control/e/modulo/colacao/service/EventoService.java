@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventoService {
@@ -19,13 +20,19 @@ public class EventoService {
        return repository.findAll();
     }
 
-    public Evento update(Integer id, Evento evento){
+    public Optional<Evento> findById(Long id){
+        repository.findById(id).orElseThrow(()->
+                new EntityNotFoundException("ID " + id + " NOT FOUND."));
+        return repository.findById(id);
+    }
+
+    public Evento update(Long id, Evento evento){
         if (!repository.existsById(id)) throw new
                 EntityNotFoundException("ID "+id+" NOT FOUND.");
         return repository.save(evento);
     }
 
-    public void delete(Integer id){
+    public void delete(Long id){
         if (!repository.existsById(id)) throw new
                 EntityNotFoundException("ID "+id+" NOT FOUND.");
         repository.deleteById(id);

@@ -16,7 +16,7 @@ public class Colando {
     private String nome;
     private String curso;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.PERSIST)
     private List<Convidado> convidados;
 
 

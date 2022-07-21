@@ -38,12 +38,6 @@ public class CursoService {
     public Optional<Curso> findById(Long id) {
         repository.findById(id).orElseThrow(()-> new EntityNotFoundException("ID " + id + " NOT FOUND."));
         return repository.findById(id);
-
-
-
-        /*if (!repository.existsById(id)) throw new
-                EntityNotFoundException("ID " + id + " NOT FOUND.");
-        return repository.findById(id);*/
     }
 
 }

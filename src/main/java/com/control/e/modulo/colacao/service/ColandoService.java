@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Observable;
+import java.util.Optional;
 
 @Service
 public class ColandoService {
@@ -17,6 +19,11 @@ public class ColandoService {
 
     public List<Colando> findAll(Colando colando){
         return repository.findAll();
+    }
+
+    public Optional<Colando> findById(Long id){
+        repository.findById(id).orElseThrow(()-> new EntityNotFoundException("ID " + id + " NOT FOUND."));
+        return repository.findById(id);
     }
 
     public Colando update(Long id, Colando colando){

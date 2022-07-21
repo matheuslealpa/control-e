@@ -14,7 +14,7 @@ import java.util.Set;
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String nomeLocal;
     private LocalDateTime dataEvento;
     @ManyToOne(cascade=CascadeType.PERSIST)

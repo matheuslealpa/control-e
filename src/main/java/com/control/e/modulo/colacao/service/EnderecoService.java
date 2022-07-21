@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnderecoService {
@@ -21,6 +22,11 @@ public class EnderecoService {
 
     public List<Endereco> findAll(){
         return repository.findAll();
+    }
+
+    public Optional<Endereco> findById(Long id){
+        repository.findById(id).orElseThrow(()-> new EntityNotFoundException("ID " + id + " NOT FOUND."));
+        return repository.findById(id);
     }
 
     public Endereco update(Long id, Endereco endereco){

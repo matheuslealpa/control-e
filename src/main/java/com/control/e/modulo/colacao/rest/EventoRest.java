@@ -25,13 +25,13 @@ public class EventoRest {
     }
 
     @PutMapping(path = "/{id}")
-    public Evento update(@PathVariable Integer id, @RequestBody Evento evento){
+    public Evento update(@PathVariable Long id, @RequestBody Evento evento){
         return service.update(id, evento);
     }
 
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id){
         service.delete(id);
     }
 
