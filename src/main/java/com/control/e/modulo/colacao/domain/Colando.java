@@ -14,10 +14,9 @@ public class Colando {
     private Long id;
     private Long matricula;
     private String nome;
-    private String curso;
-
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private Curso curso;
     @OneToMany(cascade=CascadeType.PERSIST)
     private List<Convidado> convidados;
-
 
 }
