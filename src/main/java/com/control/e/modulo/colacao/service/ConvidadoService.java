@@ -30,7 +30,7 @@ public class ConvidadoService {
 
     public Convidado update(Long id, Convidado convidado){
         if (!repository.existsById(id)) throw new
-                EntityNotFoundException("Convidado não encontrado");
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         return repository.save(convidado);
     }
 

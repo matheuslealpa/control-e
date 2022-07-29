@@ -31,7 +31,7 @@ public class EnderecoService {
 
     public Endereco update(Long id, Endereco endereco){
         if (!repository.existsById(id)) throw new
-                EntityNotFoundException("Endereço não encontrado");
+                EntityNotFoundException("ID "+id+" NOT FOUND.");
         return repository.save(endereco);
     }
 
