@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/controle-evento
+    driver-class-name: org.h2.Driver
+    username: root
+    password: root
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level:
+    br:
+      jus: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+
