@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/colando")
+@RequestMapping("api/colandos")
 public class ColandoRest {
 
     @Autowired

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("api/curso")
+@RequestMapping("api/cursos")
 public class CursoRest {
     @Autowired
     private CursoService service;

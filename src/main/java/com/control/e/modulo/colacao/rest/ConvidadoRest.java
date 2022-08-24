@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/convidado")
+@RequestMapping("api/convidados")
 public class ConvidadoRest {
 
     @Autowired
