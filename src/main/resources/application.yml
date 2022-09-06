@@ -1,7 +1,7 @@
 server:
   port: 8080
   servlet:
-    context-path: /auth-docs
+    context-path: /control-e
 spring:
   datasource:
     url: jdbc:h2:~/controle-evento
