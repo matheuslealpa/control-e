@@ -17,7 +17,7 @@ public class Evento {
     private Long id;
     private String nomeLocal;
     private LocalDateTime dataEvento;
-    @ManyToOne(cascade=CascadeType.PERSIST)
+    @ManyToOne
     private Endereco endereco;
     @OneToMany
     private Set<Colando> colandos = new HashSet<>();
