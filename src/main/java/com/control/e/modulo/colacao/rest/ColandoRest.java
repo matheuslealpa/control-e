@@ -1,7 +1,10 @@
 package com.control.e.modulo.colacao.rest;
+import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Colando;
 import com.control.e.modulo.colacao.service.ColandoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +25,8 @@ public class ColandoRest {
     }
 
     @GetMapping
-    public List<Colando> findAll(Colando colando){
-        return service.findAll(colando);
+    public Page<Colando> findAll(RSQLParam q, Pageable pageable){
+        return service.findAll(q, pageable);
     }
 
     @GetMapping("/{id}")

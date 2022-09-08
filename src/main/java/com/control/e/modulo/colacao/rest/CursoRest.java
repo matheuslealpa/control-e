@@ -1,7 +1,10 @@
 package com.control.e.modulo.colacao.rest;
+import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Curso;
 import com.control.e.modulo.colacao.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,8 +26,8 @@ public class CursoRest {
     }
 
     @GetMapping
-    public List<Curso> findAll(){
-        return service.findAll();
+    public Page<Curso> findAll(RSQLParam q, Pageable pageable){
+        return service.findAll(q, pageable);
     }
 
     @GetMapping("/{id}")

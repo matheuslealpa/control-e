@@ -1,7 +1,10 @@
 package com.control.e.modulo.colacao.rest;
+import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Endereco;
 import com.control.e.modulo.colacao.service.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +25,8 @@ public class EnderecoRest {
     }
 
     @GetMapping
-    public List<Endereco> findAll(){
-        return service.findAll();
+    public Page<Endereco> findAll(RSQLParam q, Pageable pageable){
+        return service.findAll(q, pageable);
     }
 
     public ResponseEntity<Optional<Endereco>> findById(@PathVariable Long id){

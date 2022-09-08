@@ -1,9 +1,12 @@
 package com.control.e.modulo.colacao.rest;
 
+import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Convidado;
 import com.control.e.modulo.colacao.domain.Endereco;
 import com.control.e.modulo.colacao.service.ConvidadoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +28,8 @@ public class ConvidadoRest {
     }
 
     @GetMapping
-    public List<Convidado> findAll(){
-        return service.findAll();
+    public Page<Convidado> findAll(RSQLParam q, Pageable pageable){
+        return service.findAll(q, pageable);
     }
 
     public ResponseEntity<Optional<Convidado>> findById(@PathVariable Long id){

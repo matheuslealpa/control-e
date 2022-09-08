@@ -1,11 +1,13 @@
 package com.control.e.modulo.colacao.service;
+import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Convidado;
 import com.control.e.modulo.colacao.repository.ConvidadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -18,8 +20,8 @@ public class ConvidadoService {
         return repository.save(convidado);
     }
 
-    public List<Convidado> findAll(){
-        return repository.findAll();
+    public Page<Convidado> findAll(RSQLParam q, Pageable pageable){
+        return repository.findAll(q.getSpecification(), pageable);
     }
 
     public Optional<Convidado> findById(Long id){
