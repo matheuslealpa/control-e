@@ -31,7 +31,7 @@ public class ConvidadoRest {
     public Page<Convidado> findAll(RSQLParam q, Pageable pageable){
         return service.findAll(q, pageable);
     }
-
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Convidado>> findById(@PathVariable Long id){
         return ResponseEntity.ok(service.findById(id));
     }
