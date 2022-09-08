@@ -28,7 +28,7 @@ public class EnderecoRest {
     public Page<Endereco> findAll(RSQLParam q, Pageable pageable){
         return service.findAll(q, pageable);
     }
-
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Endereco>> findById(@PathVariable Long id){
         return ResponseEntity.ok(service.findById(id));
     }
