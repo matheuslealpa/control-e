@@ -12,7 +12,7 @@ public class Colando {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Long matricula;
+    private String matricula;
     private String nome;
     @ManyToOne
     private Curso curso;
