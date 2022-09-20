@@ -1,23 +1,25 @@
 package com.control.e.modulo.colacao.rest;
 import com.control.e.modulo.colacao.core.RSQLParam;
 import com.control.e.modulo.colacao.domain.Curso;
+import com.control.e.modulo.colacao.repository.CursoRepository;
 import com.control.e.modulo.colacao.service.CursoService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
+
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping("api/cursos")
+@AllArgsConstructor
 public class CursoRest {
-    @Autowired
     private CursoService service;
+    private final CursoRepository repository;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,5 +48,10 @@ public class CursoRest {
         service.delete(id);
     }
 
+    @GetMapping(path = "/find-by-nome")
+    public ResponseEntity<Curso> findByNome(@RequestParam String nome){
+        return repository.findCursoByNomeIgnoreCase(nome).map(curso -> ResponseEntity.ok(curso))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
 }
