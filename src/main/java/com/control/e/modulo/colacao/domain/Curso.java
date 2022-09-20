@@ -14,8 +14,4 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-
-    @OneToMany
-    private List<Colando> colandos;
-
 }
