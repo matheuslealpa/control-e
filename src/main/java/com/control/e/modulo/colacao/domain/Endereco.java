@@ -25,6 +25,6 @@ public class Endereco {
     public String getLabel(){
         return rua + ", " + numero + ", " +
                 cep + ", " + cidade + ", " +
-                estado + " " + pais;
+                estado + ", " + pais;
     }
 }
