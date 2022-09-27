@@ -2,10 +2,8 @@ package com.control.e.modulo.colacao.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,4 +18,13 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String pais;
+
+    @Transient
+    private String label;
+    
+    public String getLabel(){
+        return rua + ", " + numero + ", " +
+                cep + ", " + cidade + ", " +
+                estado + " " + pais;
+    }
 }
