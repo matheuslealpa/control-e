@@ -20,5 +20,6 @@ public class Evento {
     @ManyToOne
     private Endereco endereco;
     @OneToMany
+    @JoinColumn(name = "EVENTO_ID")
     private Set<Colando> colandos = new HashSet<>();
 }
