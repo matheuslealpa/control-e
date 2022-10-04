@@ -5,6 +5,7 @@ import com.control.e.modulo.colacao.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
@@ -18,8 +19,8 @@ public class EventoService {
         return repository.save(evento);
     }
 
-    public Page<Evento> findAll(RSQLParam q, Pageable pageable){
-       return repository.findAll(q.getSpecification(), pageable);
+    public Page<Evento> findAll(Specification<Evento> spec, Pageable pageable){
+       return repository.findAll(spec, pageable);
     }
 
     public Optional<Evento> findById(Long id){
