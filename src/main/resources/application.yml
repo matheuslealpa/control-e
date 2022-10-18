@@ -4,13 +4,9 @@ server:
     context-path: /control-e
 spring:
   datasource:
-    url: jdbc:h2:~/controle-evento
-    driver-class-name: org.h2.Driver
-    username: root
-    password: root
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_3e40d7289404914?reconnect=true
+    username: b34ba572935e61
+    password: 48a16bcbd174f15
   jpa:
     hibernate:
       ddl-auto: update
@@ -29,4 +25,3 @@ logging:
         jdbc:
           core:
             JdbcTemplate: DEBUG
-
