@@ -25,3 +25,10 @@ logging:
         jdbc:
           core:
             JdbcTemplate: DEBUG
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    supported-submit-methods: ['get', 'post', 'put', 'delete', 'patch', 'options']
+  packages-to-scan: com.control.e.modulo.colacao.rest
