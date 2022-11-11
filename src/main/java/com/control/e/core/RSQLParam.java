@@ -1,4 +1,4 @@
-package com.control.e.modulo.colacao.core;
+package com.control.e.core;
 
 import com.github.tennaito.rsql.jpa.JpaPredicateVisitor;
 import com.github.tennaito.rsql.misc.ArgumentFormatException;

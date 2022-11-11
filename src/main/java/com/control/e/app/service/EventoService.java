@@ -1,7 +1,6 @@
-package com.control.e.modulo.colacao.service;
-import com.control.e.modulo.colacao.core.RSQLParam;
-import com.control.e.modulo.colacao.domain.Evento;
-import com.control.e.modulo.colacao.repository.EventoRepository;
+package com.control.e.app.service;
+import com.control.e.app.domain.Evento;
+import com.control.e.app.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

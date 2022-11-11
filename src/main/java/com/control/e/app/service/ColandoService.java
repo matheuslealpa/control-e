@@ -1,7 +1,7 @@
-package com.control.e.modulo.colacao.service;
-import com.control.e.modulo.colacao.core.RSQLParam;
-import com.control.e.modulo.colacao.domain.Colando;
-import com.control.e.modulo.colacao.repository.ColandoRepository;
+package com.control.e.app.service;
+import com.control.e.app.repository.ColandoRepository;
+import com.control.e.core.RSQLParam;
+import com.control.e.app.domain.Colando;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

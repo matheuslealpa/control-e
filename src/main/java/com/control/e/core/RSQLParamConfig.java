@@ -1,4 +1,4 @@
-package com.control.e.modulo.colacao.core;
+package com.control.e.core;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.context.request.NativeWebRequest;

@@ -1,15 +1,14 @@
-package com.control.e.modulo.colacao.service;
+package com.control.e.app.service;
 
-import com.control.e.modulo.colacao.core.RSQLParam;
-import com.control.e.modulo.colacao.domain.Endereco;
-import com.control.e.modulo.colacao.repository.EnderecoRepository;
+import com.control.e.core.RSQLParam;
+import com.control.e.app.domain.Endereco;
+import com.control.e.app.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 import java.util.Optional;
 
 @Service

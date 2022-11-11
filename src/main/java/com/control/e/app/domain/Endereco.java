@@ -1,4 +1,4 @@
-package com.control.e.modulo.colacao.domain;
+package com.control.e.app.domain;
 
 import lombok.Getter;
 import lombok.Setter;

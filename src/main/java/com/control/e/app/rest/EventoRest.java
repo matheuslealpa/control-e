@@ -1,9 +1,10 @@
-package com.control.e.modulo.colacao.rest;
-import com.control.e.modulo.colacao.core.RSQLParam;
-import com.control.e.modulo.colacao.domain.Colando;
-import com.control.e.modulo.colacao.domain.Evento;
-import com.control.e.modulo.colacao.repository.ColandoRepository;
-import com.control.e.modulo.colacao.service.EventoService;
+package com.control.e.app.rest;
+import com.control.e.app.domain.Colando;
+import com.control.e.app.domain.Evento;
+import com.control.e.app.repository.ColandoRepository;
+import com.control.e.app.repository.specification.ColandoSpecification;
+import com.control.e.app.service.EventoService;
+import com.control.e.core.RSQLParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,8 +12,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static com.control.e.modulo.colacao.repository.specification.ColandoSpecification.eventoEqualsId;
 
 import java.util.Optional;
 
@@ -56,7 +55,7 @@ public class EventoRest {
     @GetMapping("/{idEvento}/_colandos")
     public Page<Colando> findColandoByIdEvento(@PathVariable Long idEvento, RSQLParam q, Pageable pageable){
         Specification<Colando> spec = Specification
-                .where(eventoEqualsId(idEvento))
+                .where(ColandoSpecification.eventoEqualsId(idEvento))
                 .and(q.getSpecification());
         return colandoRepository.findAll(spec, pageable);
     }

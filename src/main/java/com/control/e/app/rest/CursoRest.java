@@ -1,10 +1,9 @@
-package com.control.e.modulo.colacao.rest;
-import com.control.e.modulo.colacao.core.RSQLParam;
-import com.control.e.modulo.colacao.domain.Curso;
-import com.control.e.modulo.colacao.repository.CursoRepository;
-import com.control.e.modulo.colacao.service.CursoService;
+package com.control.e.app.rest;
+import com.control.e.app.service.CursoService;
+import com.control.e.core.RSQLParam;
+import com.control.e.app.domain.Curso;
+import com.control.e.app.repository.CursoRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

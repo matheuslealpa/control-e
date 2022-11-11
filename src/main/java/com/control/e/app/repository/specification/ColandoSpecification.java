@@ -1,7 +1,7 @@
-package com.control.e.modulo.colacao.repository.specification;
+package com.control.e.app.repository.specification;
 
-import com.control.e.modulo.colacao.domain.Colando;
-import com.control.e.modulo.colacao.domain.Evento;
+import com.control.e.app.domain.Evento;
+import com.control.e.app.domain.Colando;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Join;

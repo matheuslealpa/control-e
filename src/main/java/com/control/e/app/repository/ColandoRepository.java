@@ -1,6 +1,6 @@
-package com.control.e.modulo.colacao.repository;
+package com.control.e.app.repository;
 
-import com.control.e.modulo.colacao.domain.Colando;
+import com.control.e.app.domain.Colando;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
