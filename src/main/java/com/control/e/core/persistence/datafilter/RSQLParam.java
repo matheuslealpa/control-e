@@ -1,4 +1,4 @@
-package com.control.e.core;
+package com.control.e.core.persistence.datafilter;
 
 import com.github.tennaito.rsql.jpa.JpaPredicateVisitor;
 import com.github.tennaito.rsql.misc.ArgumentFormatException;

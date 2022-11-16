@@ -1,6 +1,6 @@
 package com.control.e.app.service;
 
-import com.control.e.core.RSQLParam;
+import com.control.e.core.persistence.datafilter.RSQLParam;
 import com.control.e.app.domain.Endereco;
 import com.control.e.app.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

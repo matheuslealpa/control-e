@@ -1,6 +1,6 @@
 package com.control.e.app.service;
 import com.control.e.app.repository.ColandoRepository;
-import com.control.e.core.RSQLParam;
+import com.control.e.core.persistence.datafilter.RSQLParam;
 import com.control.e.app.domain.Colando;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

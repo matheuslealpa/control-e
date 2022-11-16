@@ -1,6 +1,6 @@
 package com.control.e.app.rest;
 import com.control.e.app.service.CursoService;
-import com.control.e.core.RSQLParam;
+import com.control.e.core.persistence.datafilter.RSQLParam;
 import com.control.e.app.domain.Curso;
 import com.control.e.app.repository.CursoRepository;
 import lombok.AllArgsConstructor;

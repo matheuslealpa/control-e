@@ -4,7 +4,7 @@ import com.control.e.app.domain.Evento;
 import com.control.e.app.repository.ColandoRepository;
 import com.control.e.app.repository.specification.ColandoSpecification;
 import com.control.e.app.service.EventoService;
-import com.control.e.core.RSQLParam;
+import com.control.e.core.persistence.datafilter.RSQLParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

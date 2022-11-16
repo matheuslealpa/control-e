@@ -1,7 +1,7 @@
 package com.control.e.app.rest;
 import com.control.e.app.domain.Endereco;
 import com.control.e.app.service.EnderecoService;
-import com.control.e.core.RSQLParam;
+import com.control.e.core.persistence.datafilter.RSQLParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
