@@ -1,8 +1,13 @@
+---
 server:
   port: 8080
   servlet:
     context-path: /control-e
+
+---
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_3e40d7289404914?reconnect=true
     username: b34ba572935e61
@@ -25,6 +30,8 @@ logging:
         jdbc:
           core:
             JdbcTemplate: DEBUG
+
+---
 springdoc:
   api-docs:
     enabled: true
@@ -32,3 +39,19 @@ springdoc:
     enabled: true
     supported-submit-methods: ['get', 'post', 'put', 'delete', 'patch', 'options']
   packages-to-scan: com.control.e.modulo.colacao.rest
+
+---
+keycloak:
+  auth-server-url: http://localhost:8085/auth
+  bearer-only: true
+  config:
+    base-url: http://localhost:4200/
+    valid-redirect-url: http://localhost:4200/*
+    backend-id: control-e-backend
+    frontend-id: control-e-frontend
+  credentials:
+    secret: f541e548-ff50-4c97-928d-f296fcd7be9c
+  realm: CONTROL-E
+  resource: control-e-backend
+  ssl-required: external
+  use-resource-role-mappings: true
