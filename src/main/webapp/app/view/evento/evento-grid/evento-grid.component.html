@@ -1,0 +1,10 @@
+<dx-data-grid
+  [dataSource]="dataSource"
+  [showBorders]="true"
+  [remoteOperations]="true"
+>
+  <dxi-column dataField="matricula" caption="Nº de matrícula" dataType="string"> </dxi-column>
+  <dxi-column dataField="nome" caption="Nome" dataType="string"> </dxi-column>
+  <dxi-column dataField="curso.nome" caption="Curso" dataType="string"> </dxi-column>
+</dx-data-grid>
+

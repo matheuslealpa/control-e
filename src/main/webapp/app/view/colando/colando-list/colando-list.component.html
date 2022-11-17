@@ -1,0 +1,72 @@
+<dx-toolbar>
+  <dxi-item location="before" style="margin-left: 10px">
+    <h2>{{ pageTitle }} ({{ totalResources }})</h2>
+  </dxi-item>
+</dx-toolbar>
+<dx-data-grid
+  [dataSource]="dataSource"
+  [allowColumnReordering]="true"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [wordWrapEnabled]="true"
+  [cellHintEnabled]="true"
+  [remoteOperations]="true"
+  (onContentReady)="onContentReady()"
+  (onToolbarPreparing)="onToolbarPreparing($event.toolbarOptions)">
+  <dxo-sorting mode="multiple"></dxo-sorting>
+  <dxo-paging [pageSize]="20"></dxo-paging>
+  <dxo-pager [allowedPageSizes]="[20]"
+             [showNavigationButtons]="true"
+             [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-search-panel [visible]="true"
+                    [width]="300"></dxo-search-panel>
+  <!-- BUTTONS -->
+  <dxi-column type="buttons"
+              cellTemplate="buttonsTemplate">
+    <div *dxTemplate="let data of 'buttonsTemplate'"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <dx-button
+        [visible]="!config.isReadOnly"
+        icon="edit"
+        hint="Editar"
+        (onClick)="edit(data.data.id)">
+      </dx-button>
+      <!--            <dx-button-->
+      <!--                    icon="trash"-->
+      <!--                    hint="Excluir"-->
+      <!--                    (onClick)="confirmDelete(data.data)">-->
+      <!--            </dx-button>-->
+      <dx-button
+        icon="chevronnext"
+        hint="Ver Detalhes"
+        (onClick)="detail(data.data.id)">
+      </dx-button>
+    </div>
+  </dxi-column>
+  <!-- COLUMNS -->
+  <dxi-column
+    dataField="matricula"
+    caption="Matrícula"
+    [width]="150"
+    [allowSearch]="true"
+    [allowFiltering]="false"
+    [allowHeaderFiltering]="false">
+  </dxi-column>
+  <dxi-column
+    dataField="nome"
+    caption="Nome"
+    [allowSearch]="true"
+    [allowFiltering]="false"
+    [allowHeaderFiltering]="false">
+  </dxi-column>
+  <dxi-column
+    dataField="curso.nome"
+    caption="Curso"
+    [allowSearch]="true"
+    [allowFiltering]="false"
+    [allowHeaderFiltering]="false">
+  </dxi-column>
+</dx-data-grid>

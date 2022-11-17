@@ -1,0 +1,91 @@
+<div class="content-block">
+  <div class="app-header"
+       fxLayout="row"
+       fxLayoutAlign="start center">
+    <h2>{{ pageTitle }}</h2>
+    <dx-button class="app-button-back"
+               text="Voltar"
+               icon="arrowleft"
+               stylingMode="text"
+               type="normal"
+               (onClick)="back()"></dx-button>
+  </div>
+  <div class="dx-card responsive-paddings">
+    <form autocomplete="off"
+          (submit)="doSave($event)">
+      <dx-form id="form"
+               [formData]="formData"
+               requiredMark="<span title='campo obrigatório'>*</span>">
+        <dxi-item dataField="nomeLocal">
+          <dxo-label text="Nome do local"></dxo-label>
+        </dxi-item>
+        <dxi-item
+          [editorOptions]="{
+                      displayFormat: 'dd/MM/yyyy HH:ss',
+                      value: null,
+                      type: 'datetime'
+                     }"
+          dataField="dataEvento"
+          editorType="dxDateBox">
+          <dxo-label text="Data e hora do evento"></dxo-label>
+        </dxi-item>
+        <dxi-item itemType="group" caption="Endereço" colCount="5">
+          <dxi-item
+            colSpan="4"
+            dataField="endereco.id"
+            editorType="dxSelectBox"
+            [editorOptions]="enderecoDxSelectBoxEditorOptions">
+            <dxo-label text="Endereco"></dxo-label>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" caption="Colando" colCount="6">
+          <dxi-item [colSpan]="6">
+            <dxo-label text="Colando"></dxo-label>
+            <div *dxTemplate>
+              <dx-drop-down-box [(value)]="colandoSelectedItemKeys"
+                                valueExpr="id"
+                                displayExpr="matricula"
+                                placeholder="Selecione a matricula..."
+                                [showClearButton]="true"
+                                [dataSource]="colandoDataSource">
+                <div *dxTemplate="let data of 'content'">
+                  <dx-list keyExpr="id"
+                           displayExpr="matricula"
+                           selectionMode="multiple"
+                           [searchEnabled]="true"
+                           searchMode="contains"
+                           [searchExpr]="['matricula']"
+                           [(selectedItemKeys)]="colandoSelectedItemKeys"
+                           [showSelectionControls]="true"
+                           [dataSource]="colandoDataSource"
+                           (onSelectionChanged)="onSelectionChangedColando($event)">
+                  </dx-list>
+                </div>
+              </dx-drop-down-box>
+            </div>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group"
+                  colCount="2"
+                  [colCountByScreen]="{ xs: 2 }">
+          <dxi-item itemType="button"
+                    horizontalAlignment="left"
+                    [buttonOptions]="{
+                                text: 'Salvar',
+                                type: 'success',
+                                useSubmitBehavior: true,
+                                disabled: saveSub && !saveSub.closed
+                              }">
+          </dxi-item>
+          <dxi-item itemType="button"
+                    horizontalAlignment="left"
+                    [buttonOptions]="{
+                                text: 'Cancelar',
+                                onClick: back
+                              }">
+          </dxi-item>
+        </dxi-item>
+      </dx-form>
+    </form>
+  </div>
+</div>

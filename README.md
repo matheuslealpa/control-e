@@ -1,4 +1,22 @@
-## módulo backend para gerenciar um evento de colação de grau
+# CONTROL-E
 
-### frontend da aplicação:
-https://github.com/matheuslealpa/control-e-frontend/
+* Docker
+* Docker composer
+* Java 8
+* Maven 3
+* Node 12
+* Angular CLI
+
+## Inicialização dos serviços
+
+Abra o terminal e na _raiz do projeto_ e executar os seguintes comandos:
+
+`$ sudo docker-compose up --remove-orphans`
+
+`$ mvn clean spring-boot:run`
+
+`$ $ npm i`
+
+`$ npx ng s`
+
+

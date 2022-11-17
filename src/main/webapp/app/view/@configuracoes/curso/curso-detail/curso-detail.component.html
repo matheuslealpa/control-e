@@ -1,0 +1,51 @@
+<div class="content-block">
+  <div class="app-header"
+       fxLayout="row"
+       fxLayoutAlign="start center">
+    <h2>{{ pageTitle }}</h2>
+    <dx-button class="app-button-back"
+               text="Voltar"
+               icon="arrowleft"
+               stylingMode="text"
+               type="normal"
+               (onClick)="back()"></dx-button>
+  </div>
+  <div class="dx-card responsive-paddings">
+    <div *ngIf="resource$ | async as foo; else loading">
+      <div>
+          <div class="dx-field">
+    <div class="dx-field-label">id</div>
+    <div class="dx-field-value-static">{{foo.id}}</div>
+</div>
+<div class="dx-field">
+    <div class="dx-field-label">nome</div>
+    <div class="dx-field-value-static">{{foo.nome}}</div>
+</div>
+      </div>
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center">
+        <dx-button text="Editar"
+                   [visible]="!config.isReadOnly"
+                   type="success"
+                   style="margin-right: 10px"
+                   (onClick)="edit(foo.id)"></dx-button>
+        <dx-button text="Excluir"
+                   [visible]="!config.isReadOnly"
+                   type="danger"
+                   style="margin-right: auto"
+                   (onClick)="confirmDelete(foo.id)"></dx-button>
+      </div>
+    </div>
+    <ng-template #loading>
+      <div fxLayout="column"
+           fxLayoutAlign="center center">
+        <p>Carregando informações... Aguarde.</p>
+        <dx-load-indicator
+          id="medium-indicator"
+          height="40"
+          width="40">
+        </dx-load-indicator>
+      </div>
+    </ng-template>
+  </div>
+</div>

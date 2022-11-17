@@ -1,0 +1,111 @@
+<dx-popup
+  [(visible)]="visible"
+>
+  <!--BUTTON CLOSE-->
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'fechar'
+    }"
+  >
+  </dxi-toolbar-item>
+  <!-- CONTENT do POPUP !-->
+  <div *dxTemplate="let data of 'content'">
+    <form autocomplete="off" (submit)="doSave($event)">
+      <dx-form id="form" [formData]="formData">
+        <!-- rua -->
+        <dxi-item
+          dataField="rua"
+          [editorOptions]="{
+            hint: 'Digite o nome da rua'
+          }"
+        >
+          <dxo-label text="Rua"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="numero"
+          [editorOptions]="{
+            hint: 'Digite o número da rua'
+          }"
+        >
+          <dxo-label text="Nº"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="cep"
+          [editorOptions]="{
+            hint: 'Digite o CEP'
+          }"
+        >
+          <dxo-label text="CEP"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="cidade"
+          [editorOptions]="{
+            hint: 'Digite o nome da cidade'
+          }"
+        >
+          <dxo-label text="CIDADE"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="estado"
+          [editorOptions]="{
+            hint: 'Digite o nome do Estado'
+          }"
+        >
+          <dxo-label text="Estado"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="pais"
+          [editorOptions]="{
+            hint: 'Digite o nome do Pais'
+          }"
+        >
+          <dxo-label text="Pais"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- SAVE BUTTON !-->
+        <dxi-item
+          itemType="button"
+          [buttonOptions]="{
+            text: 'Salvar',
+            type: 'success',
+            useSubmitBehavior: true,
+            disabled: saveSub && !saveSub.closed
+          }"
+        ></dxi-item>
+      </dx-form>
+    </form>
+  </div>
+</dx-popup>

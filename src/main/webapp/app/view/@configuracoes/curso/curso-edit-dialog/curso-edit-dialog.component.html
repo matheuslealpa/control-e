@@ -1,0 +1,53 @@
+<dx-popup
+  [maxWidth]="400"
+  [height]="280"
+  [(visible)]="visible"
+>
+  <!--BUTTON CLOSE-->
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'fechar'
+    }"
+  >
+  </dxi-toolbar-item>
+  <!-- CONTENT do POPUP !-->
+  <div *dxTemplate="let data of 'content'">
+    <form autocomplete="off" (submit)="doSave($event)">
+      <dx-form id="form" [formData]="formData">
+        <!-- nome -->
+        <dxi-item
+          dataField="nome"
+          [editorOptions]="{
+            hint: 'Digite o nome do Curso'
+          }"
+        >
+          <dxo-label text="Curso"></dxo-label>
+          <dxi-validation-rule type="required"></dxi-validation-rule>
+          <dxi-validation-rule
+            type="stringLength"
+            [max]="255"
+          ></dxi-validation-rule>
+          <dxi-validation-rule
+            type="async"
+            message="O nome do curso já existe."
+            [validationCallback]="notExistsEntityByNomeValidation"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+        <!-- SAVE BUTTON !-->
+        <dxi-item
+          itemType="button"
+          [buttonOptions]="{
+            text: 'Salvar',
+            type: 'success',
+            useSubmitBehavior: true,
+            disabled: saveSub && !saveSub.closed
+          }"
+        ></dxi-item>
+      </dx-form>
+    </form>
+  </div>
+</dx-popup>
