@@ -55,3 +55,12 @@ keycloak:
   resource: control-e-backend
   ssl-required: external
   use-resource-role-mappings: true
+
+---
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"

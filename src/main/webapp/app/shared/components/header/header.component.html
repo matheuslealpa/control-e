@@ -11,22 +11,16 @@
         onClick: toggleMenu
       }">
     </dxi-item>
-<!--    <dxi-item-->
-<!--      location="before"-->
-<!--      cssClass="header-title"-->
-<!--      *ngIf="title">-->
-<!--      <div *dxTemplate="let data of 'item'">-->
-<!--        <div class="title">{{title}}</div>-->
-<!--        <span *ngIf="appInfo$ | async as appInfo">-->
-<!--          <span class="version">{{appInfo.build.version}}.{{appInfo.git.commit.id}}</span>-->
-<!--        </span>-->
-<!--      </div>-->
-<!--    </dxi-item>-->
     <dxi-item
       location="before"
       cssClass="header-title"
-      *ngIf="title"
-      [text]="title">
+      *ngIf="title">
+      <div *dxTemplate="let data of 'item'">
+        <div class="title">{{title}}</div>
+        <span *ngIf="appInfo$ | async as appInfo">
+          <span class="version">{{appInfo.build.version}}.{{appInfo.git.commit.id}}</span>
+        </span>
+      </div>
     </dxi-item>
     <dxi-item
       location="after"

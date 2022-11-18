@@ -8,7 +8,7 @@ import { DxToolbarModule } from 'devextreme-angular/ui/toolbar';
 import { Router } from '@angular/router';
 import {KeycloakService} from "keycloak-angular";
 import {Observable} from "rxjs";
-import {AppInfo, AppInfoService} from "../../../service/app-info.service";
+import {AppInfo, AppInfoService} from "../../../@core/service/app-info.service";
 
 @Component({
   selector: 'app-header',
