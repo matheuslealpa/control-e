@@ -9,7 +9,7 @@
 
 ## Inicialização dos serviços
 
-Abra o terminal e na _raiz do projeto_ e executar os seguintes comandos:
+Abra o terminal na _raiz do projeto_ e execute os seguintes comandos:
 
 `$ sudo docker-compose up --remove-orphans`
 
