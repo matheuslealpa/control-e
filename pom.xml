@@ -140,8 +140,8 @@
             <version>1.6</version>
             <configuration>
               <installDirectory>target</installDirectory>
-              <nodeVersion>v12.13.0</nodeVersion>
-              <nodeDownloadRoot>https://nexus.tre-pa.jus.br/repository/nodejs.dist/</nodeDownloadRoot>
+              <nodeVersion>v14.15.0</nodeVersion>
+              <nodeDownloadRoot>https://nodejs.org/dist/</nodeDownloadRoot>
               <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
             </configuration>
             <executions>
