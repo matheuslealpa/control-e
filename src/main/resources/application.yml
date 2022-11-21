@@ -6,8 +6,6 @@ server:
 
 ---
 spring:
-  main:
-    allow-circular-references: true
   datasource:
     url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_3e40d7289404914?reconnect=true
     username: b34ba572935e61
