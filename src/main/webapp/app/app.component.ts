@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
-import { AuthService, ScreenService, AppInfoService } from './shared/services';
+import { ScreenService, AppInfoService } from './shared/services';
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,9 @@ export class AppComponent  {
     return Object.keys(this.screen.sizes).filter(cl => this.screen.sizes[cl]).join(' ');
   }
 
-  constructor(private authService: AuthService, private screen: ScreenService, public appInfo: AppInfoService) { }
+  constructor(private keycloakService: KeycloakService, private screen: ScreenService, public appInfo: AppInfoService) { }
 
   isAuthenticated() {
-    return this.authService.loggedIn;
+    return this.keycloakService.isLoggedIn();
   }
 }
