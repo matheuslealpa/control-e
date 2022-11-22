@@ -1,5 +1,5 @@
 import {KeycloakService} from "keycloak-angular";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../environments/environment";
 
 //Sem authorization header
 const bearerExcludedUrls = ['/assets', '/clients/public'];
