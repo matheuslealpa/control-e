@@ -1,5 +1,8 @@
 package com.control.e.core.security;
 
+import com.control.e.core.security.annotations.CompositeRoleDef;
+import com.control.e.core.security.annotations.RoleDef;
+import com.control.e.core.security.annotations.RoleDefs;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -41,14 +44,21 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 @AllArgsConstructor
 @KeycloakConfiguration
 public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
+    /**
+     * Injeção com todas as classes que implementam {@link ResourceSecurityConfig}.
+     */
+    private final Set<ResourceSecurityConfig> resourceSecurityConfigs;
+
     private final Environment env;
 
     private final String[] STATIC_RESOURCES = new String[] {
@@ -87,10 +97,6 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
         return new NullAuthenticatedSessionStrategy();
     }
 
-//    @Bean
-//    public KeycloakConfigResolver KeycloakConfigResolver() {
-//        return new KeycloakSpringBootConfigResolver();
-//    }
 
     @Bean
     @Scope(scopeName = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -183,47 +189,47 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
     }
 
     private void registerRoles(ClientResource backendResource) {
-//        log.info("Add roles...");
-//        for (ResourceSecurityConfig resSec : resourceSecurityConfigs) {
-//            if (resSec.getClass().getSuperclass().isAnnotationPresent(RoleDefs.class)) {
-//                RoleDef[] roles = resSec.getClass().getSuperclass().getAnnotation(RoleDefs.class).roles();
-//                Map<String, RoleRepresentation> rolesInKeycloak = rolesInKeycloak();
-//                log.debug("rolesInKeycloak: {}", rolesInKeycloak.keySet());
-//                Stream.of(roles)
-//                    .filter(role -> !rolesInKeycloak.containsKey(role.name()))
-//                    .map(roleDef -> new RoleRepresentation(roleDef.name(), roleDef.description(), false))
-//                    .forEach(role -> backendResource.roles().create(role));
-////                log.info("...({})", Stream.of(roles).map(RoleDef::name).collect(Collectors.joining(", ")));
-//            }
-//        }
+        log.info("Add roles...");
+        for (ResourceSecurityConfig resSec : resourceSecurityConfigs) {
+            if (resSec.getClass().getSuperclass().isAnnotationPresent(RoleDefs.class)) {
+                RoleDef[] roles = resSec.getClass().getSuperclass().getAnnotation(RoleDefs.class).roles();
+                Map<String, RoleRepresentation> rolesInKeycloak = rolesInKeycloak();
+                log.debug("rolesInKeycloak: {}", rolesInKeycloak.keySet());
+                Stream.of(roles)
+                    .filter(role -> !rolesInKeycloak.containsKey(role.name()))
+                    .map(roleDef -> new RoleRepresentation(roleDef.name(), roleDef.description(), false))
+                    .forEach(role -> backendResource.roles().create(role));
+                log.info("...({})", Stream.of(roles).map(RoleDef::name).collect(Collectors.joining(", ")));
+            }
+        }
     }
 
     private void registerCompositeRoles(ClientResource backendResource) {
-//        for (ResourceSecurityConfig resSec : resourceSecurityConfigs) {
-//            if (resSec.getClass().getSuperclass().isAnnotationPresent(RoleDefs.class)) {
-//                CompositeRoleDef[] roles = resSec.getClass().getSuperclass().getAnnotation(RoleDefs.class).compositeRoles();
-//                Map<String, RoleRepresentation> rolesInKeycloak = rolesInKeycloak();
-//                log.debug("rolesInKeycloak: {}", rolesInKeycloak.keySet());
-//                Stream.of(roles)
-//                    .forEach(compositeRoleDef -> backendResource.roles().get(compositeRoleDef.name())
-//                        .addComposites(
-//                            Stream.of(compositeRoleDef.roles())
-//                                .map(r -> rolesInKeycloak.get(r))
-//                                .collect(Collectors.toList()))
-//                    );
-////                log.info("Composite Role ({}) [{}]", Stream.of(roles).map(CompositeRoleDef::name));
-//            }
-//        }
+        for (ResourceSecurityConfig resSec : resourceSecurityConfigs) {
+            if (resSec.getClass().getSuperclass().isAnnotationPresent(RoleDefs.class)) {
+                CompositeRoleDef[] roles = resSec.getClass().getSuperclass().getAnnotation(RoleDefs.class).compositeRoles();
+                Map<String, RoleRepresentation> rolesInKeycloak = rolesInKeycloak();
+                log.debug("rolesInKeycloak: {}", rolesInKeycloak.keySet());
+                Stream.of(roles)
+                    .forEach(compositeRoleDef -> backendResource.roles().get(compositeRoleDef.name())
+                        .addComposites(
+                            Stream.of(compositeRoleDef.roles())
+                                .map(r -> rolesInKeycloak.get(r))
+                                .collect(Collectors.toList()))
+                    );
+                log.info("Composite Role ({}) [{}]", Stream.of(roles).map(CompositeRoleDef::name));
+            }
+        }
     }
 
     private void configScopeMappings(ClientResource backendResource, ClientResource frontendResource) {
-//        frontendResource.getScopeMappings().clientLevel(backendResource.toRepresentation().getId())
-//            .add(resourceSecurityConfigs.stream()
-//                .flatMap(r -> Stream.of(r.getClass().getSuperclass().getAnnotation(RoleDefs.class).roles()))
-//                .map(roleDef -> new RoleRepresentation(roleDef.name(), roleDef.description(), false))
-//                .collect(Collectors.toList())
-//            );
-//
+        frontendResource.getScopeMappings().clientLevel(backendResource.toRepresentation().getId())
+            .add(resourceSecurityConfigs.stream()
+                .flatMap(r -> Stream.of(r.getClass().getSuperclass().getAnnotation(RoleDefs.class).roles()))
+                .map(roleDef -> new RoleRepresentation(roleDef.name(), roleDef.description(), false))
+                .collect(Collectors.toList())
+            );
+
         frontendResource.getScopeMappings().clientLevel(accountResource().toRepresentation().getId())
                 .add(Arrays.asList(
                         new RoleRepresentation("view-profile", "", false),
@@ -246,8 +252,8 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
             userRepresentation.setCredentials(Arrays.asList(credentialRepresentation));
 
             getKeycloak().realm(realm).users().create(userRepresentation).close();
-//            rootResource().roles().clientLevel(backendResource().toRepresentation().getId())
-//                .add(rolesInKeycloak().values().stream().collect(Collectors.toList()));
+            rootResource().roles().clientLevel(backendResource().toRepresentation().getId())
+                .add(rolesInKeycloak().values().stream().collect(Collectors.toList()));
             log.info("User root criado.");
         }
     }
