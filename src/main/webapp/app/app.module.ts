@@ -8,7 +8,8 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
-import {securityInitFn} from "./@core/security/security-init-fn";
+import {securityInitFn} from "./@security/security-init-fn";
+
 
 
 @NgModule({
