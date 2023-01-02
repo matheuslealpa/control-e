@@ -1,4 +1,4 @@
-import {EventEmitter, Injector, OnInit, Output, ViewChild} from "@angular/core";
+import {Injector} from "@angular/core";
 import {Observable, of, Subscription} from "rxjs";
 import {StandardNgService} from "./standard-ng-service";
 import {Title} from "@angular/platform-browser";
